@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RuleAdd" >
+	<!--In potrait mode both the buttons overlap,check on that.  -->
+	<!-- Executes this when Add Rule button is clicked in activity_main.xml page. -->
+	<!-- Remember to add text validation when the user clicks on the add button -->
+	<!-- Protocol field can be added later based upon time and effort. -->
+	
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="3" />
+
+    
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="28dp"
+        android:text="Add Rule"
+        android:onClick="Add" />"
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_centerVertical="true"
+        android:text="Delete Rule" 
+        android:onClick="Reject" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_toRightOf="@+id/editText5"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="3" />
+
+    <TextView
+        android:id="@+id/editText5"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_toRightOf="@+id/editText1"
+        android:ems="10"
+        android:inputType="none"
+        android:text="." 
+        />
+
+    <TextView
+        android:id="@+id/editText6"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_toRightOf="@+id/editText2"
+        android:ems="10"
+        android:inputType="none"
+        android:text="." />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_toRightOf="@+id/button2"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="3" />
+
+    <TextView
+        android:id="@+id/editText7"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_toRightOf="@+id/editText3"
+        android:ems="10"
+        android:inputType="none"
+        android:text="." />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_toRightOf="@+id/editText7"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="3" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>

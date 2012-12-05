@@ -1,0 +1,15 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IP_Add" >
+<!-- Executes this when Add button in activity_rule_add.xml is clicked. -->
+<!-- This page shows when the ip address is successfully added, more functionality can be added later now it is just the basic page -->   
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="IP Address Added" />
+
+</RelativeLayout>

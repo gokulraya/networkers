@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IP_Reject" >
+
+   <!-- Executes this page when Reject button in activity_rule_add is pressed. -->
+   <!-- It just shows the basic functionality,more functionalities to be added later -->
+   <!-- Can be changed into a notification Box when user clicks on any button in rule_add. -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="IP address Rejected." />
+
+</RelativeLayout>
