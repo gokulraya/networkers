@@ -3,6 +3,7 @@ package com.example.ip_database;
 
 import java.util.ArrayList;
 
+//import android.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,11 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+
 
 public class MainActivity extends Activity {
 
 	
 	EditText edit_Text,edit_Text2;
+	//TableLayout dataTable;
 	Button button,button_2;
 	TableLayout dataTable;
 	DatabaseManager db;
@@ -27,7 +32,7 @@ public class MainActivity extends Activity {
 		db=new DatabaseManager(this);
 		setupViews();
 		addButtonListeners();
-		//updateTable();
+		updateTable();
 		//Log.v("Successful", null);
 		}
 		catch( Exception e)
@@ -44,7 +49,7 @@ public class MainActivity extends Activity {
 		edit_Text=(EditText)findViewById(R.id.editText1);
 		button=(Button)findViewById(R.id.button1);
 		edit_Text2=(EditText)findViewById(R.id.editText2);
-		button_2=(Button)findViewById(R.id.button2);
+		//button_2=(Button)findViewById(R.id.button2);
 	}
 	private void addButtonListeners()
 	{
@@ -80,7 +85,7 @@ public class MainActivity extends Activity {
 					edit_Text.getText().toString(),
 					edit_Text2.getText().toString()
 			);
-			//updateTable();
+			updateTable();
 			//emptyFormFields();
 		}
 		catch(Exception e)
@@ -158,7 +163,7 @@ public class MainActivity extends Activity {
 	private void emptyFormFields()
 	{
 		edit_Text.setText("");
-	}
+	}*/
 	private void updateTable()
 	{
 		while(dataTable.getChildCount()>1)
@@ -175,9 +180,13 @@ public class MainActivity extends Activity {
 			tablerow.addView(idText);
 			TextView textOne = new TextView(this);
     		textOne.setText(row.get(1).toString());
+    		TextView text2=new TextView(this);
+    		text2.setText(row.get(2).toString());
+    		tablerow.addView(text2);
     		tablerow.addView(textOne);
+    		
     		dataTable.addView(tablerow);
     	}
-    }*/
+    }
 	
 }

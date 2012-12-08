@@ -1,8 +1,11 @@
 package com.example.ip_database;
 
+import java.util.ArrayList;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -65,6 +68,36 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 	
+	}
+	public ArrayList<ArrayList<Object>> getAllRowsAsArrays()
+	{
+		ArrayList<ArrayList<Object>> dataArrays=new ArrayList<ArrayList<Object>>();
+		Cursor cursor;
+		try
+		{
+			cursor=db.query(
+					TABLE_NAME, new String[]{TABLE_ROW_ID,TABLE_ROW_IP,TABLE_ROW_TWO}, 
+					null, null, null, null, null);
+			cursor.moveToFirst();
+			if(!cursor.isAfterLast())
+			{
+				do
+				{
+					ArrayList<Object> dataList=new ArrayList<Object>();
+					dataList.add(cursor.getLong(0));
+					dataList.add(cursor.getString(1));
+					dataList.add(cursor.getString(2));
+					
+					dataArrays.add(dataList);
+				}while(cursor.moveToNext());
+			}
+		}
+		catch(SQLException e)
+		{
+			Log.e("DB Error",e.toString());
+			e.printStackTrace();
+		}
+		return dataArrays;
 	}
 	
 	private class CustomSQLiteOpenHelper extends SQLiteOpenHelper

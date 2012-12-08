@@ -4,54 +4,56 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
+        <TableLayout
+            android:id="@+id/data_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            >
+            <TableRow>
+               <TextView 
+                    	android:text="@string/th_id"
+                    	android:minWidth="50px" 
+                    	/> 
+           		<TextView 
+                    	android:text="@string/th_text_one"
+                    	android:minWidth="125px" 
+                    	/> 
+                <TextView 
+                    	android:text="@string/th_text_two"
+                    	android:minWidth="125px" 
+                    	/> 
+                </TableRow>
+            </TableLayout>
+
     <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="55dp"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_below="@+id/data_table"
+        android:layout_marginTop="138dp"
         android:ems="10" >
 
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Insert" />
-
-    <TableLayout
-        android:id="@+id/data_table"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button1"
-        android:layout_marginLeft="34dp"
-        android:layout_marginTop="30dp" >
-
-        
-       
-    </TableLayout>
-
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_alignLeft="@+id/data_table"
-        android:layout_marginBottom="24dp"
+        android:layout_alignBottom="@+id/editText1"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_marginBottom="40dp"
         android:ems="10" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
-        android:layout_alignTop="@+id/data_table"
-        android:text="Retreive" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText1"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="34dp"
+        android:text="Insert" />
 
 </RelativeLayout>

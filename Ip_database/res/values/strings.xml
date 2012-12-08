@@ -4,5 +4,8 @@
     <string name="app_name">Ip_database</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="th_id">&quot;&quot;</string>
+    <string name="th_text_one">&quot;&quot;</string>
+    <string name="th_text_two">&quot;&quot;</string>
 
 </resources>
