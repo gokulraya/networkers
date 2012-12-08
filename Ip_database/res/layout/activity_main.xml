@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Button" />
+        android:text="Insert" />
 
     <TableLayout
         android:id="@+id/data_table"
@@ -45,5 +45,13 @@
         android:layout_alignLeft="@+id/data_table"
         android:layout_marginBottom="24dp"
         android:ems="10" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/button1"
+        android:layout_alignTop="@+id/data_table"
+        android:text="Retreive" />
 
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.example.ip_database;
 
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +15,7 @@ public class MainActivity extends Activity {
 
 	
 	EditText edit_Text,edit_Text2;
-	Button button;
+	Button button,button_2;
 	TableLayout dataTable;
 	DatabaseManager db;
 	@Override
@@ -42,7 +44,7 @@ public class MainActivity extends Activity {
 		edit_Text=(EditText)findViewById(R.id.editText1);
 		button=(Button)findViewById(R.id.button1);
 		edit_Text2=(EditText)findViewById(R.id.editText2);
-		
+		button_2=(Button)findViewById(R.id.button2);
 	}
 	private void addButtonListeners()
 	{
@@ -56,7 +58,18 @@ public class MainActivity extends Activity {
 			}
 		);
 	}
-	
+	/*private void addButtonListeners1()
+	{
+		button_2.setOnClickListener
+		(
+			new View.OnClickListener() 
+			{
+				
+				@Override public void onClick(View v) {RetrieveRow();}
+				
+			}
+		);
+	}*/
 	
 	private void addRow()
 	{
@@ -75,7 +88,28 @@ public class MainActivity extends Activity {
 			Log.e("Add error",e.toString());
 			e.printStackTrace();
 		}
+		
 	}
+	
+	/*private void RetrieveRow()
+	{
+		try
+    	{
+    		// The ArrayList that holds the row data
+    		ArrayList<Object> row;
+    		// ask the database manager to retrieve the row with the given rowID
+    		row = db.getRowAsArray();
+ 
+    		// update the form fields to hold the retrieved data
+    		//updateTextFieldOne.setText((String)row.get(1));
+    		//updateTextFieldTwo.setText((String)row.get(2));
+    	}
+    	catch (Exception e)
+    	{
+    		Log.e("Retrieve Error", e.toString());
+    		e.printStackTrace();
+    	}
+	}*/
 	/*private void deleteRow()
 	{
 		try
