@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConnectedActivity" >
+
+    <EditText
+        android:id="@+id/websiteAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="17dp"
+        android:layout_marginTop="14dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/websiteAddress"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@+id/websiteAddress"
+        android:text="Website"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/websiteAddress"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="15dp" />
+
+    <Button
+        android:id="@+id/getContentButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/websiteAddress"
+        android:layout_centerHorizontal="true"
+        android:onClick="@string/getContent"
+        android:text="Get Content" />
+
+</RelativeLayout>

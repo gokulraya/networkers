@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="main_click">clickOnMain</string><string name="app_name">androidTest</string>
+    <string name="main_click">clickOnMain</string>
+    <string name="app_name">Client</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="INVALID_IPADDRESS">Invalid IP Address</string>
     <string name="UNKNOWN_HOST">Unknown Host/ Destination not reachable</string>
     <string name="GENERAL_ERROR">Error Occured while doing the operation</string>
-    
+    <string name="title_activity_connected">ConnectedActivity</string>
+    <string name="getContent">getContent</string>
+    <string name="INVALID_WEBSITE">Invalid Website</string>
 
 </resources>
