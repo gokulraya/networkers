@@ -2,9 +2,10 @@ package com.example.ip_database;
 
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
-//import android.R;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,12 +14,13 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+//import android.R;
 
 
 public class MainActivity extends Activity {
 
 	
-	EditText edit_Text,edit_Text2;
+	EditText editText_Port,editText_Action,editText_id,editText_site,editText_address;
 	//TableLayout dataTable;
 	Button button,button_2;
 	TableLayout dataTable;
@@ -33,6 +35,7 @@ public class MainActivity extends Activity {
 		setupViews();
 		addButtonListeners();
 		updateTable();
+		emptyFormFields();
 		//Log.v("Successful", null);
 		}
 		catch( Exception e)
@@ -46,10 +49,20 @@ public class MainActivity extends Activity {
 	private void setupViews()
 	{
 		dataTable=(TableLayout)findViewById(R.id.data_table);
-		edit_Text=(EditText)findViewById(R.id.editText1);
+		
+		editText_Port=(EditText)findViewById(R.id.editText1);
+		
 		button=(Button)findViewById(R.id.button1);
-		edit_Text2=(EditText)findViewById(R.id.editText2);
-		//button_2=(Button)findViewById(R.id.button2);
+		
+		editText_Action=(EditText)findViewById(R.id.editText2);
+		
+		button_2=(Button)findViewById(R.id.button2);
+		
+		editText_id=(EditText)findViewById(R.id.editText3);
+		
+		editText_site=(EditText)findViewById(R.id.editText4);
+		
+		editText_address=(EditText)findViewById(R.id.editText5);
 	}
 	private void addButtonListeners()
 	{
@@ -60,39 +73,77 @@ public class MainActivity extends Activity {
 				
 				@Override public void onClick(View v) {addRow();}
 				
+				
 			}
 		);
+		button_2.setOnClickListener
+		(
+			new View.OnClickListener() 
+			{
+				
+				@Override public void onClick(View v) {deleteRow();}
+				
+			}
+		);
+
 	}
-	/*private void addButtonListeners1()
+	/*private void addButtonListener()
 	{
 		button_2.setOnClickListener
 		(
 			new View.OnClickListener() 
 			{
 				
-				@Override public void onClick(View v) {RetrieveRow();}
+				@Override public void onClick(View v) {deleteRow();}
 				
 			}
 		);
-	}*/
-	
+	}
+	*/
 	private void addRow()
 	{
-		try
+		 final String IP_REGEX="^((\\d|\\d{2}|([0-1]\\d{2})|(2[0-4][0-9])|(25[0-5]))\\.){3}(\\d|\\d{2}|([0-1]\\d{2})|(2[0-4][0-9])|(25[0-5]))$";
+		 final String WEBSITE_REGEX="^(((http|https)://)?)([A-Za-z0-9.]*)$";
+		String address_Validation=editText_address.getText().toString();
+		String site_Validation=editText_site.getText().toString();
+		Pattern p=Pattern.compile(address_Validation);
+		boolean m=Pattern.matches(IP_REGEX, address_Validation);
+		Pattern s=Pattern.compile(WEBSITE_REGEX);
+		boolean Bsite_check=Pattern.matches(WEBSITE_REGEX, site_Validation);
+		if(m==true && Bsite_check==true)
 		{
-			db.addRow
-			(
-					edit_Text.getText().toString(),
-					edit_Text2.getText().toString()
-			);
-			updateTable();
-			//emptyFormFields();
+			
+			try
+			{
+				db.addRow
+				(
+						editText_address.getText().toString(),
+						editText_site.getText().toString(),
+						editText_Action.getText().toString(),
+						editText_Port.getText().toString()
+						//edit_Text5.getText().toString(),
+						//edit_text6.getText().toString()
+				);
+				updateTable();
+				emptyFormFields();
+				//deleteRow();
+			}
+			catch(Exception e)
+			{
+				Log.e("Add error",e.toString());
+				e.printStackTrace();
+			}
+			
 		}
-		catch(Exception e)
+		else
 		{
-			Log.e("Add error",e.toString());
-			e.printStackTrace();
+			AlertDialog.Builder altDialog= new AlertDialog.Builder(this);
+			altDialog.setMessage("IP address/Site format not correct,Please check again.");
+			altDialog.setTitle("Invalid Input");
+			AlertDialog alert=altDialog.create();
+			alert.show();
 		}
+		
 		
 	}
 	
@@ -115,11 +166,11 @@ public class MainActivity extends Activity {
     		e.printStackTrace();
     	}
 	}*/
-	/*private void deleteRow()
+	private void deleteRow()
 	{
 		try
 		{
-			db.deleteRow(edit_Text.getText().toString());
+			db.deleteRow(Long.parseLong(editText_id.getText().toString()));
 			updateTable();
 			emptyFormFields();
 		}
@@ -129,7 +180,7 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 	}
-	private void retrieveRow()
+	/*private void retrieveRow()
 	{
 		try
 		{
@@ -159,11 +210,14 @@ public class MainActivity extends Activity {
     		Log.e("Update Error", e.toString());
     		e.printStackTrace();
     	}
-    }
+    }*/
 	private void emptyFormFields()
 	{
-		edit_Text.setText("");
-	}*/
+		//editText_Port.setText("");
+		//editText_Action.setText("");
+		//editText_site.setText("");
+		//editText_address.setText("");
+	}
 	private void updateTable()
 	{
 		while(dataTable.getChildCount()>1)
@@ -175,15 +229,30 @@ public class MainActivity extends Activity {
 		{
 			TableRow tablerow=new TableRow(this);
 			ArrayList<Object> row =data.get(position);
-			TextView idText = new TextView(this);
-    		idText.setText(row.get(0).toString());
-			tablerow.addView(idText);
-			TextView textOne = new TextView(this);
-    		textOne.setText(row.get(1).toString());
-    		TextView text2=new TextView(this);
-    		text2.setText(row.get(2).toString());
-    		tablerow.addView(text2);
-    		tablerow.addView(textOne);
+			
+			TextView text_id = new TextView(this);
+    		text_id.setText(row.get(0).toString());
+			tablerow.addView(text_id);
+			
+			TextView text_address = new TextView(this);
+    		text_address.setText(row.get(1).toString());
+    		tablerow.addView(text_address);
+    		    		
+    		TextView text_site=new TextView(this);
+    		text_site.setText(row.get(3).toString());
+    		tablerow.addView(text_site);
+    		
+    		TextView text_Action=new TextView(this);
+    		text_Action.setText(row.get(4).toString());
+    		tablerow.addView(text_Action);
+    		
+    		
+    		
+    		TextView text_Port=new TextView(this);
+    		text_Port.setText(row.get(5).toString());
+    		tablerow.addView(text_Port);
+    		
+    		
     		
     		dataTable.addView(tablerow);
     	}

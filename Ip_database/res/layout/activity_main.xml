@@ -13,11 +13,8 @@
                <TextView 
                     	android:text="@string/th_id"
                     	android:minWidth="50px" 
-                    	/> 
-           		<TextView 
-                    	android:text="@string/th_text_one"
-                    	android:minWidth="125px" 
-                    	/> 
+                    	/>
+               <TextView android:minWidth="125px" android:text="@string/th_text_one"/> 
                 <TextView 
                     	android:text="@string/th_text_two"
                     	android:minWidth="125px" 
@@ -25,35 +22,66 @@
                 </TableRow>
             </TableLayout>
 
-    <EditText
-        android:id="@+id/editText1"
+    <Button
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/data_table"
-        android:layout_marginTop="138dp"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
+        android:layout_alignTop="@+id/editText3"
+        android:layout_toRightOf="@+id/editText1"
+        android:text="Delete" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText1"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="19dp"
         android:ems="10" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/editText3"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText1"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginBottom="15dp"
         android:text="Insert" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="38dp"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText1"
+        android:layout_alignParentLeft="true"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText2"
+        android:layout_alignParentLeft="true"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText4"
+        android:layout_alignParentLeft="true"
+        android:ems="10" />
 
 </RelativeLayout>
