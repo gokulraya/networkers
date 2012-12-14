@@ -24,4 +24,5 @@ public class Constants {
 	public static final String SUCCESS="SUCCESS";
 	public static final String FAILED="FAILED";
 	public static final String DELIMITER="^";
+	public static final String FINISHED_SENDING="END_OF_TRANSMISSION_FROM_WEBSITE";
 }

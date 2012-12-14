@@ -77,8 +77,6 @@ public class MainActivity extends Activity {
 				error= Constants.UNKNOWN_HOST_EXCEPTION;
 			} 
 			catch (IOException e1) {
-				received+=e1.getCause();
-				received += e1.getMessage();
 				error=Constants.IO_EXCEPTION;
 			}
 			catch(IllegalArgumentException e){
@@ -134,6 +132,11 @@ public class MainActivity extends Activity {
 				text = (TextView) findViewById(R.id.textView);
 				String unknownHost = res.getString(R.string.UNKNOWN_HOST);
 				text.setText(unknownHost);
+			}
+			else if(error==Constants.IO_EXCEPTION)
+			{
+				text = (TextView) findViewById(R.id.textView);
+				text.setText(received);
 			}
 			else{
 				text = (TextView) findViewById(R.id.textView);

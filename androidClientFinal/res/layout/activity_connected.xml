@@ -27,16 +27,6 @@
         android:text="Website"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/websiteAddress"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="15dp" />
-
     <Button
         android:id="@+id/getContentButton"
         style="?android:attr/buttonStyleSmall"
@@ -46,5 +36,19 @@
         android:layout_centerHorizontal="true"
         android:onClick="@string/getContent"
         android:text="Get Content" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/getContentButton"
+        android:layout_marginTop="14dp"
+        android:maxLines="65535"
+        android:scrollHorizontally="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
+        android:text=" " />
 
 </RelativeLayout>

@@ -6,16 +6,20 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Scroller;
 import android.widget.TextView;
 
 public class ConnectedActivity extends Activity {
@@ -47,6 +51,7 @@ public class ConnectedActivity extends Activity {
 		String received="";
 		Resources res = getResources();
 		String website="";
+		ArrayList<String> output = new ArrayList<String>();
 		public Long doInBackground(URL...urls){
 			Socket socket = null;
 			Bundle extras = getIntent().getExtras();
@@ -74,8 +79,16 @@ public class ConnectedActivity extends Activity {
 					String password = extras.getString("password");
 					DataInputStream in = new DataInputStream(socket.getInputStream());
 					DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+					if(!website.startsWith("http"))
+						website="http://" + website;
 					out.writeUTF(password+Constants.DELIMITER+website.toLowerCase());
-					received = in.readUTF();
+					while(true){
+						received = in.readUTF();
+						if(received.equals(Constants.FINISHED_SENDING))
+							break;
+						output.add(received);
+					}
+					socket.close();
 				}
 				if(error == Constants.GENERAL_EXCEPTION){
 					received+=res.getString(R.string.GENERAL_ERROR);
@@ -84,14 +97,19 @@ public class ConnectedActivity extends Activity {
 			catch(Exception e){
 				received += e.getMessage();
 				received += e.getStackTrace();
-				//received=res.getString(R.string.GENERAL_ERROR);
+				received=res.getString(R.string.GENERAL_ERROR);
 			}
 			return (long)1;
 		}
 		
 		protected void onPostExecute(Long result){
-			TextView tv = (TextView) findViewById(R.id.content);
-			tv.setText(received);
+			if(error==Constants.NO_ERROR){
+				TextView tv = (TextView) findViewById(R.id.content);
+				for(int i=0;i<output.size();i++){
+					tv.append(output.get(i));
+				}
+				tv.setMovementMethod(new ScrollingMovementMethod());
+			}
 		}
 
 		private boolean invalidWebsite(String website){
